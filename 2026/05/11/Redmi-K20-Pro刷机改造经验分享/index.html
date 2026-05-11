@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Redmi K20 Pro刷机改造经验分享 | Arthur Jiang's Blog</title><meta name="author" content="Arthur Jiang"><meta name="copyright" content="Arthur Jiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="​ 前言 骁龙855，6.39英寸完整全面屏……这是红米K20 Pro。这台手机身上拥有太多我们所追求的“完美”元素。从2019年5月，它发布的那一天起，无数米粉和刷机爱好者便为之狂欢。而时代的潮流终究还是以“厚重，不防水”的罪名，淹没了“弹出式全面屏”，于是K20与K30系列的几款手机便成为了绝唱。其中，K20 Pro因其十分低廉的价格，而广为人知。 我的这台机器是8+256的配置，448元收来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redmi K20 Pro刷机改造经验分享">
+<meta property="og:url" content="https://arthurjiang2009.github.io/2026/05/11/Redmi-K20-Pro%E5%88%B7%E6%9C%BA%E6%94%B9%E9%80%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.html">
+<meta property="og:site_name" content="Arthur Jiang&#39;s Blog">
+<meta property="og:description" content="​ 前言 骁龙855，6.39英寸完整全面屏……这是红米K20 Pro。这台手机身上拥有太多我们所追求的“完美”元素。从2019年5月，它发布的那一天起，无数米粉和刷机爱好者便为之狂欢。而时代的潮流终究还是以“厚重，不防水”的罪名，淹没了“弹出式全面屏”，于是K20与K30系列的几款手机便成为了绝唱。其中，K20 Pro因其十分低廉的价格，而广为人知。 我的这台机器是8+256的配置，448元收来">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://arthurjiang2009.github.io/images/1.jpg">
+<meta property="article:published_time" content="2026-05-11T13:54:33.000Z">
+<meta property="article:modified_time" content="2026-05-11T13:57:40.055Z">
+<meta property="article:author" content="Arthur Jiang">
+<meta property="article:tag" content="各种折腾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://arthurjiang2009.github.io/images/1.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Redmi K20 Pro刷机改造经验分享",
+  "url": "https://arthurjiang2009.github.io/2026/05/11/Redmi-K20-Pro%E5%88%B7%E6%9C%BA%E6%94%B9%E9%80%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/",
+  "image": "https://arthurjiang2009.github.io/images/1.jpg",
+  "datePublished": "2026-05-11T13:54:33.000Z",
+  "dateModified": "2026-05-11T13:57:40.055Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Arthur Jiang",
+      "url": "https://arthurjiang2009.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://arthurjiang2009.github.io/2026/05/11/Redmi-K20-Pro%E5%88%B7%E6%9C%BA%E6%94%B9%E9%80%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redmi K20 Pro刷机改造经验分享',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/2.PNG);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Arthur Jiang's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Redmi K20 Pro刷机改造经验分享</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Redmi K20 Pro刷机改造经验分享</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-11T13:54:33.000Z" title="发表于 2026-05-11 21:54:33">2026-05-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-11T13:57:40.055Z" title="更新于 2026-05-11 21:57:40">2026-05-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>​</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><p><img src="https://i-blog.csdnimg.cn/direct/1923ec8e73744ede961972e768c527af.jpeg"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<p><strong>骁龙855，6.39英寸完整全面屏</strong>……这是红米K20 Pro。这台手机身上拥有太多我们所追求的“完美”元素。从2019年5月，它发布的那一天起，无数米粉和刷机爱好者便为之狂欢。而时代的潮流终究还是以“厚重，不防水”的罪名，淹没了“弹出式全面屏”，于是K20与K30系列的几款手机便成为了绝唱。其中，K20 Pro因其十分低廉的价格，而广为人知。</p>
+<p>我的这台机器是8+256的配置，448元收来。除电池健康已经掉到71%左右，其余无任何明显缺陷。</p>
+<h1 id="刷入系统"><a href="#刷入系统" class="headerlink" title="刷入系统"></a>刷入系统</h1><p>到手的第一步肯定是**解锁BL。这里我使用官方工具，官方流程解锁，十分顺利，没有碰上任何的阻碍。</p>
+<p>解锁了BL，我们就要挑选一个合适的系统刷入了。毕竟，几乎没人会想在2025年将MIUI12.5作为日用系统，无论是温度还是观感。</p>
+<p>在这里，我选用的是酷安Kameyuki大佬制作的MIUI14官改（在此感谢这位大佬的制作，如有侵权我会第一时间删除），底层为安卓13。<a target="_blank" rel="noopener" href="https://www.123684.com/s/FqHcjv-sFIUh" title="在此附上系统下载链接">在此附上系统下载链接</a></p>
+<p>在这里，我们遇到了第一个坎。这台K20Pro刚到手时系统版本为MIUI12.5.6稳定版，底层安卓11。由于时间久远，我并不清楚安卓11的分区情况，以及是否有A&#x2F;B分区，抑或是VAB分区。于是我凭感觉选择了<strong>动态分区包。</strong></p>
+<p>刷入TWRP，熟悉的操作。双清，安装。安装失败，<strong>无法挂载&#x2F;system_root，解密&#x2F;data失败</strong>。我无语了。B站，酷安和百度这时候每一个能帮上忙的，一气之下直接格式化了手机。趁重新线刷官方包的时间里，询问了deepseek，得到了<strong>更换静态分区包</strong>重试的回答。于是我重新选择了静态分区的刷机包，在TWRP中刷入……</p>
+<p>**依旧失败。**但这次的报错内容有了一些区别：<strong>mk2efs -t ext4 -b 4096 &#x2F;dev&#x2F;block&#x2F;sda31 60403707 过程结束，错误：1，无法清除data，无法格式化并删除加密。</strong></p>
+<p>仔细观察，发现这次的问题仅仅指向了&#x2F;data，于是我开始思考是不是双清和三清没清干净的问题，经过一顿操作之后，无意间在TWRP中选择了修改文件系统。在这里<strong>我将&#x2F;data的文件系统由原来的ext4改为了exFAT，然后再次改回了ext4</strong>。再次尝试刷入……这次竟然成功了，尽管有一些红色的提示文字，但是刷入结果上显示的是成功。重新启动，果然进入了系统。MIUI14，还是熟悉的味道，不错。</p>
+<p>然后便是获取root权限。我先在<a target="_blank" rel="noopener" href="http://magisksu.com/" title="Magisk官方网站（一定认准官方下载）">Magisk官方网站（一定认准官方下载）</a>上下载了最新版的magisk。接着解压刷机包，提取并修补boot，再使用twrp刷入修补后的boot，一气呵成。</p>
+<h1 id="软件调优"><a href="#软件调优" class="headerlink" title="软件调优"></a>软件调优</h1><p>刷了好用的系统，自然不能缺了好用的模块。</p>
+<p>这里依次介绍一下我刷入的模块和调优软件，由于大部分是我在酷安里一层层爬楼爬到的，为防止侵权，还是建议大家去酷安寻找最适合自己的版本。</p>
+<p><strong>再次感谢各位大佬的辛勤付出！！！！！</strong></p>
+<p>1.A-soul游戏性能调优：由于我自己只在这台手机上运行一些压力较小的音游，感知不大。</p>
+<p>2.双扬声器+震感调教：众所周知，K20P最大的缺点就是它的单扬声器和转子马达。刷入这个模块后，转子马达的“嗡嗡”声小了很多，终于接近一些Z轴了（）；音质方面，由于我自己不是经常使用它的外放，所以尚不清楚效果如何。</p>
+<p>3.电池解容：我更换了一块4500mAh的扩容电池，相比原装的4000mAh大了一些，这个模块可以让系统读取到更多的电池容量，从而充分利用电池，提高续航能力。当然，如果你把那多出来的500mAh当作冗余设计，想要更长的电池寿命，那这个模块也可以不刷。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/7ff30f1886e74796b46a1a3c1bf9e5ff.jpeg"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动">​</p>
+<p>4.Shamiko+Zygisk Next+Zygisk：隐藏root三件套，需要选择与当前系统和硬件相匹配的版本，且在magisk的设置里面关闭自带zygisk和“遵守排除列表”。Shamiko会根据magisk里的“配置排除列表”中勾选的软件来隐藏root。我自己看到的许多网友都在使用这一套配置，听说比magisk自带的效果更好就使用了，实测确实效果不错，WPS和银行软件都能正常使用。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/b2585060ceb24386a0c3619e31b82af6.jpeg"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动">​</p>
+<p>5.uperf：大名鼎鼎的yc调度，刷入之后实测续航好了一些，软件运行速度影响不大，但是刷b站不烫了是真的。需要选择与当前SoC和安卓版本相对应的模块才行。</p>
+<p>6.NoActive墓碑调度：对于减少内存占用比较有用。由于我这台机器是8GB RAM的，日常使用基本上能剩余2.5G可用左右。结合我用过的其他8G内存的小米手机来说，我已经很满意了。当然NoActive也可以针对特定应用特定设置，不用担心你的播放器被误杀。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/9c192c0f2f194e3baef3122cfb0ab48b.jpeg"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<p>7.救砖模块：不用说了，刷机必备。当然我个人认为最重要的还是定期备份数据和你的系统。常备一个可以用的boot分区镜像是很重要的，至少你在给GPU超频这些操作上不至于一次就变砖，还能刷回来，强烈建议。</p>
+<p>8.调色：众所周知K20P的第三个缺点就是这块60Hz的屏幕。在2025年的今天，我们的眼睛早就被各种90Hz 120Hz 144Hz的高刷屏给调好了，而这台K20Pro也可以实现屏幕超频。在超到75Hz以上的时候你会发现屏幕色彩明显偏绿，别着急，这是正常现象。刷了这个调色模块，实测能稍微改善一点上述的偏色情况：75Hz下几乎不偏，81Hz看不太出来，90Hz轻微偏绿，我日常就一直开着90Hz使用，没有不适的情况。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/4d61c5e4a8434779b89a0e60d30618af.jpeg"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动">​</p>
+<p>&#x3D;&#x3D;*以下模块需要在LSPosed中使用&#x3D;&#x3D;</p>
+<p>9.核心破解：我自己认为最好用的功能是可以降级安装应用，可以安装一些修改过的应用（比如堆叠后台的桌面软件），自由度高了很多，好评。<strong>当然软件安全还是十分重要的！！遇到来源不明的软件，一定要三思而后行！！</strong></p>
+<p>10.cemiuier（西米露）：地位堪比三星系统上的Good Lock.不仅可以自定义某些系统功能，还可以美化界面到你喜欢的样子。功能十分强大，也很繁多，大家自己探索的话会更好，限于篇幅就不详细展开了。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/5d600e5e70d14673b70d021739678f97.jpeg"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动">​</p>
+<h1 id="日用改造"><a href="#日用改造" class="headerlink" title="日用改造"></a>日用改造</h1><p>在如今这个QQ内置虚幻引擎的时代，老设备肯定需要老软件来增强使用体验。这里推荐一些我认为好用的软件版本：</p>
+<p>1.网易云音乐：8.3.0官方版，可以使用微博登录，基本功能全都有，而且性能需求比新版本更低。</p>
+<p>2.QQ、微信、B站：安装<strong>Google Play版本</strong>，这些版本在保证基础功能不缺少的情况下足够流畅，推荐安装。</p>
+<p>其他部分软件，碍于旧版本部分功能使用受限，思考之后我还是选择了安装新版，卡一点就卡一点吧，反正我平时也不常用。</p>
+<p>另外就是换电池。我在淘宝上购买了一块4500mAh的扩容电池，尺寸和大小均与原装相差无几，可以直接安装上去，相比于原来那块4000*71%&#x3D;2840mAh的电池，续航直接翻倍。在拆机的时候，大家要有耐心，像我这台就是粘后盖的胶干了，我费了半个多小时才拿下来，建议大家不要心急把它拆碎了（虽然很容易就能再买一个新的）。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>为什么要在这个时候写这样一篇博客呢？首先，K20Pro改造的项目是我自己这两三年以来，给自己最大的项目了。前前后后两周左右，直到我把这篇博客敲出来。我的账号也很久没有用过了，今天有机会登上来看看，能看见三年前自己还是那么意气风发，现在却被各种事情搞得萎靡不振了。只是我觉得，既然做了些什么，就该把它记下来，即使是做一些像刷机这样“意义不大”的事。未来有时间了，也许我还会尝试建一个个人网站吧，然后把这些放进去。说到底，也只是想把自己拉回正轨。十年后的八月，也许我不会热衷于做这些“毫无意义”的事，但是我还希望我自己能够记得，之前的自己是个什么样子，记得我们来时的初心。</p>
+<p>​</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://arthurjiang2009.github.io">Arthur Jiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://arthurjiang2009.github.io/2026/05/11/Redmi-K20-Pro%E5%88%B7%E6%9C%BA%E6%94%B9%E9%80%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">https://arthurjiang2009.github.io/2026/05/11/Redmi-K20-Pro%E5%88%B7%E6%9C%BA%E6%94%B9%E9%80%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://arthurjiang2009.github.io" target="_blank">Arthur Jiang's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%84%E7%A7%8D%E6%8A%98%E8%85%BE/">各种折腾</a></div><div class="post-share"><div class="social-share" data-image="/images/1.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/01/01/%E5%BD%93%E6%97%B6%E4%BB%A3%E7%9A%84%E8%A7%82%E6%B5%8B%E8%80%85%EF%BC%8C%E5%9B%9E%E6%9C%9B%E8%BF%87%E5%8E%BB/" title="当时代的观测者，回望过去"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">当时代的观测者，回望过去</div></div><div class="info-2"><div class="info-item-1">​        近几个月，“Frutiger Aero”这种艺术风格不知怎的，又火了起来。考虑到现代人糟糕的生活环境，他们对这种2000年代（Y2K）风格艺术的喜爱，或更多的是怀念，也“情有可原”。 何为“Frutiger Aero”？​        由于写文时笔者没有查询到“Frutiger”的具体意思，故这里使用“Future”来理解——一种先前的人们对21世纪的想象：美好，和平，环境优美，科技无处不在。而“Aero”则源自于Windows Vista的一种主题风格。 ​        Windows Vista生于2007年，即使只见其充满“未来风”的图标和华丽的动效，不开Aero效果，你也能从一堆Windows XP中轻而易举地分辨出Vista。然而，当你打开了主题设置中的”Aero”，一切都变了。窗口的背景与任务栏瞬间切换到了半透明的玻璃效果，似乎一块真是的玻璃覆盖在系统界面上……再转头一看XP的“Bliss”风格，那种傻傻的白蓝主题简直像是30年前的产物。且当你移动窗口时，“玻璃”正下方的图标效果也是实时渲染的（怎么有一种光追的既视感）。2025年，iOS26在系...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Arthur Jiang</div><div class="author-info-description">技术、生活与旅行</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Arthurjiang2009"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">313的（不）神秘小屋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">刷入系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%B0%83%E4%BC%98"><span class="toc-number">3.</span> <span class="toc-text">软件调优</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E7%94%A8%E6%94%B9%E9%80%A0"><span class="toc-number">4.</span> <span class="toc-text">日用改造</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">5.</span> <span class="toc-text">后记</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/11/Redmi-K20-Pro%E5%88%B7%E6%9C%BA%E6%94%B9%E9%80%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" title="Redmi K20 Pro刷机改造经验分享">Redmi K20 Pro刷机改造经验分享</a><time datetime="2026-05-11T13:54:33.000Z" title="发表于 2026-05-11 21:54:33">2026-05-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/01/%E5%BD%93%E6%97%B6%E4%BB%A3%E7%9A%84%E8%A7%82%E6%B5%8B%E8%80%85%EF%BC%8C%E5%9B%9E%E6%9C%9B%E8%BF%87%E5%8E%BB/" title="当时代的观测者，回望过去">当时代的观测者，回望过去</a><time datetime="2026-01-01T03:20:01.000Z" title="发表于 2026-01-01 11:20:01">2026-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/26/%E7%BB%88%E4%BA%8E%E5%BB%BA%E5%A5%BD%E4%BA%86%EF%BC%81/" title="终于建好了！">终于建好了！</a><time datetime="2025-12-26T04:53:20.000Z" title="发表于 2025-12-26 12:53:20">2025-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/26/Rev-Polish-Notation/" title="Rev_Polish_Notation">Rev_Polish_Notation</a><time datetime="2025-12-26T03:14:20.000Z" title="发表于 2025-12-26 11:14:20">2025-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/26/hello-world/" title="Hello World">Hello World</a><time datetime="2025-12-26T03:11:16.118Z" title="发表于 2025-12-26 11:11:16">2025-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Arthur Jiang</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
